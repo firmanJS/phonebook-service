@@ -30,8 +30,7 @@ jobs:
           chmod +x ./cc-test-reporter
           ./cc-test-reporter before-build
           go test -v -coverprofile=codeclimate.json ./...
-          ./cc-test-reporter format-coverage -t lcov -o codeclimate.json
-          ./cc-test-reporter upload-coverage
+          ./cc-test-reporter upload-coverage --debug -i codeclimate.json
 
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
