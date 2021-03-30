@@ -16,8 +16,8 @@ jobs:
     - name: Build
       run: go build -v ./...
 
-    - name: Run unit tests
       uses: actions/checkout@v2
+    - name: Run unit tests
 
       run: |
         make clean coverage
