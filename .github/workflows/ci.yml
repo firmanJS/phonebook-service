@@ -24,7 +24,8 @@ jobs:
       - uses: actions/setup-go@main
         with:
           go-version: 1.14
-      - run: make clean test-ci
+      - run: | 
+          make clean test-ci
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
