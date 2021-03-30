@@ -30,7 +30,7 @@ jobs:
           chmod +x ./cc-test-reporter
           ./cc-test-reporter before-build
           go test -v -coverprofile=coverage.json ./...
-          ./cc-test-reporter format-coverage coverage.json
+          ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.json coverage/lcov.info
           ./cc-test-reporter upload-coverage
 
         env:
