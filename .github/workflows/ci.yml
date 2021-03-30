@@ -23,15 +23,16 @@ jobs:
       - uses: actions/checkout@main
       - uses: actions/setup-go@main
         with:
-          go-version: 1.14      
-      - uses: paambaati/codeclimate-action@v2.7.5
+          go-version: 1.14  
+
+      - run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.json coverage/lcov.info
+          ./cc-test-reporter upload-coverage
+
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageCommand: gocov test -coverprofile=profile.cov ./... 
-            ./cc-test-reporter format-coverage --input-type gocov profile.cov ./... 
-            ./cc-test-reporter upload-coverage
-
   # test:
   #     runs-on: ubuntu-latest
   #     strategy:
