@@ -29,8 +29,8 @@ jobs:
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
           chmod +x ./cc-test-reporter
           ./cc-test-reporter before-build
-          gocov test -coverprofile=out 
-          ./cc-test-reporter format-coverage --input-type gocov out 
+          go test -v -coverprofile=coverage.json ./...
+          ./cc-test-reporter format-coverage coverage.json
           ./cc-test-reporter upload-coverage
 
         env:
