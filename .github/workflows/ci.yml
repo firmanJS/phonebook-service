@@ -28,8 +28,8 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: gocov test -coverprofile=out 
-            ./cc-test-reporter format-coverage --input-type gocov out 
+          coverageCommand: gocov test -coverprofile=profile.cov ./... 
+            ./cc-test-reporter format-coverage --input-type gocov profile.cov ./... 
             ./cc-test-reporter upload-coverage
 
   # test:
