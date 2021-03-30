@@ -24,9 +24,11 @@ jobs:
       - uses: actions/setup-go@main
         with:
           go-version: 1.14
-      - run: go test -coverprofile coverage.out ./...
+      - uses: paambaati/codeclimate-action@v2.7.5
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: go test -coverprofile coverage.out ./...
 
   # test:
   #     runs-on: ubuntu-latest
