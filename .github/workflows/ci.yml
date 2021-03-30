@@ -4,19 +4,33 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout main
-      uses: actions/checkout@main
+    - uses: actions/checkout@v2
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.14
+    - name: Build
+      run: go build -v ./...
 
-    - name: Run unit tests
-      run: |
-        make coverage
-      env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+  coverage:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-go@main
+        with:
+          go-version: 1.14      
+      - uses: paambaati/codeclimate-action@v2.7.5
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: gocov test -coverprofile=out 
+            ./cc-test-reporter format-coverage --input-type gocov out 
+            ./cc-test-reporter upload-coverage
 
   # test:
   #     runs-on: ubuntu-latest
