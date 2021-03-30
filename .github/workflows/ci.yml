@@ -25,7 +25,7 @@ jobs:
         with:
           go-version: 1.14
       - run: | 
-          make clean test-ci
+          make test-coverage
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
