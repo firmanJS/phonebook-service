@@ -16,17 +16,13 @@ jobs:
     - name: Build
       run: go build -v ./...
 
-  coverage:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run unit tests
-        uses: actions/checkout@v2
+    - name: Run unit tests
+      uses: actions/checkout@v2
 
-        run: |
-          make clean coverage
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      run: |
+        make clean coverage
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
   # test:
   #     runs-on: ubuntu-latest
