@@ -3,7 +3,7 @@ ROOT                    := $(PWD)
 GO_HTML_COV             := ./coverage.html
 GO_TEST_OUTFILE         := ./c.out
 GOLANG_DOCKER_IMAGE     := golang:1.15
-CC_TEST_REPORTER_ID		:= ${CC_TEST_REPORTER_ID}
+CC_TEST_REPORTER_ID		:= 9e89b47a0ebe452c1f755c72fa45173842d436b2c6e365c63713d7dd192027f5
 CC_PREFIX				:= github.com/firmanJS/phonebook-service
 #   Usage:
 #       make test
