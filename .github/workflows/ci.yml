@@ -24,8 +24,8 @@ jobs:
       - uses: actions/setup-go@main
         with:
           go-version: 1.14  
-      - run: go get github.com/axw/gocov/gocov
       - run: |
+          go get github.com/axw/gocov/gocov
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
           chmod +x ./cc-test-reporter
           gocov test -coverprofile=out 
