@@ -24,15 +24,9 @@ jobs:
       - uses: actions/setup-go@main
         with:
           go-version: 1.14
-      - run: |
-          echo "CC_PREFIX=$(go list -m)" >> $GITHUB_ENV
-      - uses: paambaati/codeclimate-action@v2.7.5
+      - run: make clean test-ci
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageCommand: go test -coverprofile coverage.out ./...
-          coverageLocations: "${{ github.workspace }}/c.out:gocov" # Should be the default, but workarounds this issue
-          prefix: ${{ env.CC_PREFIX }} # Makes reporter work with modern gocov reports
 
   # test:
   #     runs-on: ubuntu-latest
