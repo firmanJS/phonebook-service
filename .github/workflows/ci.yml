@@ -24,8 +24,7 @@ jobs:
       - uses: actions/setup-go@main
         with:
           go-version: 1.14
-      - run: | 
-          make test-coverage
+      - run: make coverage
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 

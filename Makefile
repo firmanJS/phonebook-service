@@ -20,7 +20,7 @@ CC_PREFIX       := github.com/firmanJS/phonebook-service
 
 #   Usage:
 #       make test
-test-coverage:
+coverage:
  # download CC test reported
     docker run -w /app -v ${ROOT}:/app ${GOLANG_DOCKER_IMAGE} \
         /bin/bash -c \
