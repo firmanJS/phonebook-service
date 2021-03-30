@@ -20,12 +20,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
-      - uses: actions/checkout@main
+      - name: Run unit tests
+        uses: actions/checkout@v2
 
-      - name: Run Coverage
         run: |
-          make coverage
+          make clean test-ci
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
