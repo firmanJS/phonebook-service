@@ -24,8 +24,7 @@ jobs:
       - uses: actions/setup-go@main
 
       - name: Run unit tests
-        run: |
-          make clean test-ci
+        run: make coverage
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       #   with:
