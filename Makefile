@@ -37,7 +37,7 @@ coverage:
 		${GOLANG_DOCKER_IMAGE} ./cc-test-reporter before-build
 
 	# run testing
-	docker run -w /app -v ${ROOT}:/app ${GOLANG_DOCKER_IMAGE} go test -v -coverprofile=${GO_TEST_OUTFILE} ./...
+	docker run -w /app -v ${ROOT}:/app ${GOLANG_DOCKER_IMAGE} go test ./... -coverprofile=${GO_TEST_OUTFILE}
 	docker run -w /app -v ${ROOT}:/app ${GOLANG_DOCKER_IMAGE} go tool cover -html=${GO_TEST_OUTFILE} -o ${GO_HTML_COV}
 
 	#upload coverage result
