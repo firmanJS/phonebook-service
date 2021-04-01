@@ -19,7 +19,7 @@ GO_HTML_COV             := ./coverage.html
 GO_TEST_OUTFILE         := ./c.out
 GOLANG_DOCKER_IMAGE     := golang:1.15
 CC_TEST_REPORTER_ID		:= ${CC_TEST_REPORTER_ID}
-CC_PREFIX				:= github.com/firmanJS/phonebook-service
+CC_PREFIX				:= github.com/sapawarga/phonebook-service
 
 # custom logic for code climate, gross but necessary
 coverage:
